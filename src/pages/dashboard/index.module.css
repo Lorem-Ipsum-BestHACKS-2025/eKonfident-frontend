@@ -1,0 +1,30 @@
+.page {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  grid-column-gap: 1em;
+  grid-row-gap: 1em;
+  width: 100%;
+  min-height: calc(100vh - 5rem);
+  height: auto;
+}
+
+.page > * {
+  border-radius: 2rem;
+}
+
+.heatMap {
+  grid-area: 1 / 1 / 5 / 4;
+}
+
+.stats {
+  grid-area: 1 / 4 / 2 / 6;
+}
+
+.incidents {
+  grid-area: 2 / 4 / 6 / 6;
+}
+
+.ai {
+  grid-area: 5 / 1 / 6 / 4;
+}

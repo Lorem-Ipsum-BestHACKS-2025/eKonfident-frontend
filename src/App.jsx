@@ -1,5 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
+import "./App.css";
 import Navbar from "./components/Navbar";
 import Dashboard from "./pages/dashboard";
 import LeaderboardPage from "./pages/leaderboard-page";
@@ -9,7 +10,7 @@ function App() {
   return (
     <BrowserRouter>
       <Navbar />
-      <main>
+      <main className="main">
         <Routes>
           <Route path="/" element={<Dashboard />} />
           <Route path="/report" element={<ReportPage />} />
