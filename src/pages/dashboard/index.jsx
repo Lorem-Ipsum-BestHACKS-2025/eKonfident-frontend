@@ -1,6 +1,9 @@
 import "leaflet/dist/leaflet.css";
+import { MdLink } from "react-icons/md";
 import { MapContainer, TileLayer } from "react-leaflet";
 
+import AiForecast from "../../components/AiForecast";
+import Button from "../../components/Button";
 import CustomHeatmapLayer from "../../components/CustomHeatmapLayer";
 import RecentIncidents from "../../components/RecentIncidents";
 import style from "./index.module.css";
@@ -54,6 +57,13 @@ export default function Dashboard() {
         />
         <CustomHeatmapLayer data={heatmapData} radius={20} blur={-3} />
       </MapContainer>
+      <AiForecast className={style.ai} />
+      <section className={style.side}>
+        <span>Przejdź na ciemną stronę mocy... Bądź sztywnym gitem</span>
+        <Button>
+          <MdLink size={"3rem"} /> Zobacz nieKonfident
+        </Button>
+      </section>
       <RecentIncidents
         className={style.incidents}
         incidents={["a", "a", "a", "a", "a", "a"]}

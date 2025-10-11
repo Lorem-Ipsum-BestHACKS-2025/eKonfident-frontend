@@ -17,8 +17,21 @@
   grid-area: 1 / 1 / 5 / 4;
 }
 
-.stats {
+.side {
   grid-area: 1 / 4 / 2 / 6;
+  padding: 2rem;
+  font-size: 1.25rem;
+  color: var(--lightest);
+  background-color: var(--dark);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.side > *:last-child {
+  margin-left: 0.5rem;
+  display: flex;
+  align-items: center;
 }
 
 .incidents {
