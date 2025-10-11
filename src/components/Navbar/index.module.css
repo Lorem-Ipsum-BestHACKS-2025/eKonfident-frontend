@@ -1,0 +1,32 @@
+.nav {
+  position: sticky;
+  max-width: 100%;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 2rem;
+  padding: 1.5rem 3rem;
+  background-color: var(--dark);
+  color: var(--lightest);
+  border-radius: 2rem;
+  -webkit-box-shadow: -1px 0px 25px -10px var(--darkest);
+  -moz-box-shadow: -1px 0px 25px -10px var(--darkest);
+  box-shadow: -1px 0px 25px -10px var(--darkest);
+}
+
+.nav > a {
+  display: block;
+  margin-right: 1rem;
+  text-decoration: none;
+  color: var(--lightest);
+  transition: all ease 0.1s;
+}
+
+.nav > *:nth-last-child {
+  margin-right: 0;
+}
+
+.nav > a:hover {
+  color: var(--light);
+}
