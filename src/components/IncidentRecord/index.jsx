@@ -1,3 +1,5 @@
+import CommentButton from "../CommentButton";
+import VoteButton from "../VoteButton";
 import style from "./index.module.css";
 
 export default function IncidentRecord({
@@ -24,8 +26,8 @@ export default function IncidentRecord({
         </section>
       </section>
       <section className={style.buttons}>
-        <button onClick={() => console.log(id)}>up/downvote</button>
-        <button>komentarz</button>
+        <VoteButton id={id} voteGiven={1} count={200} />
+        <CommentButton id={id} />
       </section>
     </section>
   );

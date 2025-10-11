@@ -1,3 +1,6 @@
+import { MdOutlineReadMore } from "react-icons/md";
+import { Link } from "react-router-dom";
+
 import IncidentRecord from "../IncidentRecord";
 import style from "./index.module.css";
 
@@ -23,7 +26,9 @@ export default function RecentIncidents({ className, incidents }) {
           />
         ))}
       </section>
-      <section className={style.button}>Zobacz więcej</section>
+      <Link to="/reports" className={style.button}>
+        <span>Zobacz więcej</span> <MdOutlineReadMore size={"2rem"} />
+      </Link>
     </section>
   );
 }

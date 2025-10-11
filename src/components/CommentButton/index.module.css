@@ -1,0 +1,22 @@
+.button {
+  display: block;
+  padding: 0.5rem 0.25rem;
+  border-radius: 0.5rem;
+  border: 2px solid var(--darkest);
+  background-color: var(--darkest);
+  color: var(--lightest);
+  text-decoration: none;
+  text-align: center;
+  transition: all ease 0.1s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button > *:first-child {
+  margin-right: 0.25rem;
+}
+
+.button:hover {
+  background-color: var(--dark);
+}

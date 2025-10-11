@@ -16,6 +16,19 @@
 .button {
   flex-grow: fit-content;
   flex-basis: 0;
+  text-decoration: none;
+  color: var(--lightest);
+  font-size: 1.25rem;
+  display: flex;
+  align-items: center;
+}
+
+.button > *:first-child {
+  margin-right: 0.5rem;
+}
+
+.button:hover {
+  color: var(--light);
 }
 
 .top > header {
