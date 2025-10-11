@@ -1,12 +1,11 @@
 .nav {
   position: sticky;
   max-width: 100%;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   display: flex;
   align-items: center;
-  justify-content: center;
-  margin: 2rem;
-  padding: 1.5rem 3rem;
+  justify-content: space-between;
+  margin: 1rem 3rem 0 3rem;
   background-color: var(--dark);
   color: var(--lightest);
   border-radius: 2rem;
@@ -15,7 +14,29 @@
   box-shadow: -1px 0px 25px -10px var(--darkest);
 }
 
-.nav > .link {
+.nav > section:first-child {
+  font-size: 2rem;
+  padding: 0 3rem;
+  cursor: default;
+  display: flex;
+  align-items: center;
+}
+
+.nav > section:first-child > *:first-child {
+  margin-right: 0.25rem;
+}
+
+.links {
+  display: flex;
+  align-items: center;
+  padding: 1.5rem 3rem;
+}
+
+.links > *:last-child {
+  margin-right: 0;
+}
+
+.link {
   display: block;
   margin-right: 1rem;
   text-decoration: none;
@@ -23,10 +44,26 @@
   transition: all ease 0.1s;
 }
 
-.nav > *:nth-last-child {
-  margin-right: 0;
+.link:hover {
+  color: var(--light);
 }
 
-.nav > .link:hover {
-  color: var(--light);
+@media only screen and (max-width: 1058px) {
+  .nav {
+    flex-direction: column;
+  }
+
+  nav > section:first-child {
+    padding: 1.5rem 0 0 0 !important;
+  }
+}
+
+@media only screen and (max-width: 765px) {
+  .links {
+    flex-direction: column;
+  }
+
+  .link {
+    margin: 1rem;
+  }
 }
