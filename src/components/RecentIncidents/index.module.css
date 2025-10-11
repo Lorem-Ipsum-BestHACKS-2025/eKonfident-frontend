@@ -1,0 +1,31 @@
+.tile {
+  padding: 2em;
+  background-color: var(--dark);
+  color: var(--lightest);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.top {
+  flex-grow: 1;
+  flex-basis: 0;
+  overflow-y: hidden;
+}
+
+.button {
+  flex-grow: fit-content;
+  flex-basis: 0;
+}
+
+.top > header {
+  font-size: 2rem;
+}
+
+.incident {
+  border-bottom: 1px solid var(--darkest);
+}
+
+.incident:last-child {
+  border-bottom: none;
+}

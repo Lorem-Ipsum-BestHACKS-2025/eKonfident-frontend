@@ -2,10 +2,11 @@ import "leaflet/dist/leaflet.css";
 import { MapContainer, TileLayer } from "react-leaflet";
 
 import CustomHeatmapLayer from "../../components/CustomHeatmapLayer";
+import RecentIncidents from "../../components/RecentIncidents";
 import style from "./index.module.css";
 
-const CENTER_LAT = 51.505;
-const CENTER_LNG = -0.09;
+const CENTER_LAT = 52.22977;
+const CENTER_LNG = 21.01178;
 const NUM_POINTS = 50;
 
 const getRandomFloat = (min, max) => Math.random() * (max - min) + min;
@@ -36,7 +37,7 @@ const generateHeatmapData = () => {
 const heatmapData = generateHeatmapData();
 
 export default function Dashboard() {
-  const center = [51.505, -0.09];
+  const center = [51.9189046, 19.1343786];
   const zoom = 6;
 
   return (
@@ -53,6 +54,10 @@ export default function Dashboard() {
         />
         <CustomHeatmapLayer data={heatmapData} radius={20} blur={-3} />
       </MapContainer>
+      <RecentIncidents
+        className={style.incidents}
+        incidents={["a", "a", "a", "a", "a", "a"]}
+      />
     </section>
   );
 }
