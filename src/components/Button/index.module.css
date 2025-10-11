@@ -1,0 +1,17 @@
+.button {
+  padding: 0.5em 1em;
+  font-size: 1.25rem;
+  cursor: pointer;
+  border-radius: 0.5em;
+  border: none;
+  background-color: var(--accent);
+  color: var(--darkest);
+  transition: all ease 0.2s;
+  display: block;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.button:hover {
+  transform: scale(115%);
+}
