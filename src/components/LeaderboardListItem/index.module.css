@@ -1,0 +1,49 @@
+.rankingList {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.listItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 25px;
+  margin-bottom: 10px;
+  background-color: var(--dark);
+  border-radius: 2rem;
+  transition: background-color 0.2s;
+}
+
+.listItem:hover {
+  background-color: var(--light);
+}
+
+.rankInfo {
+  display: flex;
+  align-items: center;
+}
+
+.rankNumber {
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  border-radius: 50%;
+  background-color: var(--darkest);
+  color: var(--light);
+  font-weight: 600;
+  margin-right: 15px;
+  font-size: 0.9rem;
+}
+
+.listName {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--lightest);
+}
+
+.listPoints {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--lightest);
+}

@@ -1,0 +1,66 @@
+.leaderboardContainer {
+  background-color: var(--darkest);
+  min-height: 100vh;
+  padding: 40px 20px;
+  font-family: "Inter", sans-serif;
+  color: var(--lightest);
+  --gold: #ffc837;
+  --silver: #aaaeb3;
+  --bronze: #cd7f32;
+}
+
+.header {
+  text-align: center;
+  color: var(--lightest);
+  margin-bottom: 40px;
+}
+
+.mainTitle {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: var(--lightest);
+}
+
+.subtitle {
+  font-size: 1.1rem;
+  color: var(--light);
+}
+
+/* --- Top 3 Podium Cards --- */
+
+.podiumGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-bottom: 40px;
+  max-width: 75%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.name {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 5px;
+  color: var(--lightest);
+}
+
+.points {
+  font-size: 1rem;
+  color: var(--accent);
+  font-weight: 500;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .podiumGrid {
+    grid-template-columns: 1fr;
+    max-width: 400px;
+  }
+
+  .podiumCard {
+    /* Add rank number inside card title area on mobile */
+    padding-top: 50px;
+  }
+}
