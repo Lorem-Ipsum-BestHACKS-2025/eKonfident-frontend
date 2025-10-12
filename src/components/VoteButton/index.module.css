@@ -56,3 +56,12 @@
 .component > button:disabled:hover {
   background-color: var(--darkest);
 }
+
+.component > button.active {
+  background-color: var(--accent);
+  font-weight: bold;
+}
+
+.component > button.active:hover {
+  background-color: var(--accent);
+}

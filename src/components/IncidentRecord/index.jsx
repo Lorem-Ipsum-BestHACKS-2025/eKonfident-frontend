@@ -11,6 +11,8 @@ export default function IncidentRecord({
   name,
   username,
   date,
+  upvotes = 0,
+  downvotes = 0,
 }) {
   return (
     <section className={`${style.record} ${className}`}>
@@ -26,7 +28,7 @@ export default function IncidentRecord({
         </section>
       </section>
       <section className={style.buttons}>
-        <VoteButton id={id} voteGiven={0} count={200} />
+        <VoteButton id={id} voteGiven={0} count={upvotes - downvotes} />
         <CommentButton id={id} />
       </section>
     </section>

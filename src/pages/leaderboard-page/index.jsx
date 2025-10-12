@@ -1,22 +1,60 @@
+import { useEffect, useState } from "react";
+
 import LeaderboardListItem from "../../components/LeaderboardListItem";
 import PodiumCard from "../../components/PodiumCard";
+import { api } from "../../utils/api";
 import style from "./index.module.css";
 
-// Dummy data for the leaderboard
-const leaderboardData = [
-  { rank: 1, name: "Sophia", lastName: "Kowalski", points: 1500 },
-  { rank: 2, name: "Jan Nowak", lastName: "", points: 1450 },
-  { rank: 3, name: "Anna Zielinski", lastName: "", points: 1400 },
-  { rank: 4, name: "Piotr Lewandowski", lastName: "", points: 1350 },
-  { rank: 5, name: "Maria Wisniewski", lastName: "", points: 1300 },
-  { rank: 6, name: "Krzysztof Kaminski", lastName: "", points: 1250 },
-  { rank: 7, name: "Magdalena Mazur", lastName: "", points: 1200 },
-  { rank: 8, name: "Tomasz Jankowski", lastName: "", points: 1150 },
-  { rank: 9, name: "Barbara Wojciechowski", lastName: "", points: 1100 },
-  { rank: 10, name: "Andrzej Malinowski", lastName: "", points: 1050 },
-];
-
 export default function LeaderboardPage() {
+  const [leaderboardData, setLeaderboardData] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchLeaderboard = async () => {
+      try {
+        const data = await api.leaderboard.get();
+
+        // Limit to top 20 results and transform the data
+        const limitedData = data.slice(0, 20);
+        const transformedData = limitedData.map((item, index) => ({
+          rank: index + 1,
+          name: item.firstName || "Anonim",
+          lastName: item.lastName || "",
+          points: item.score || 0,
+          email: item.email,
+        }));
+
+        setLeaderboardData(transformedData);
+      } catch (err) {
+        console.error("Failed to fetch leaderboard:", err);
+        setError("Nie można załadować tabeli wyników");
+
+        // Fallback to dummy data if API fails
+        setLeaderboardData([
+          { rank: 1, name: "Sophia", lastName: "Kowalski", points: 1500 },
+          { rank: 2, name: "Jan", lastName: "Nowak", points: 1450 },
+          { rank: 3, name: "Anna", lastName: "Zielinski", points: 1400 },
+        ]);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchLeaderboard();
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="leaderboardContainer">
+        <header className={style.header}>
+          <h1 className="mainTitle">Naczelni konfidenci</h1>
+          <p className="subtitle">Ładowanie tabeli wyników...</p>
+        </header>
+      </div>
+    );
+  }
+
   const topThree = leaderboardData.slice(0, 3);
   const remainingRanks = leaderboardData.slice(3);
 
@@ -24,7 +62,9 @@ export default function LeaderboardPage() {
     <div className="leaderboardContainer">
       <header className={style.header}>
         <h1 className="mainTitle">Naczelni konfidenci</h1>
-        <p className="subtitle">To ci jedzą makowca na komendzie.</p>
+        <p className="subtitle">
+          {error ? error : "To ci jedzą makowca na komendzie."}
+        </p>
       </header>
       <div className={style.podiumGrid}>
         {topThree.map((user) => (
