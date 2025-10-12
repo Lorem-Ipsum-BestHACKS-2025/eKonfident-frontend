@@ -1,0 +1,9 @@
+.mapContainer {
+  height: 400px;
+  /* Możesz dostosować wysokość */
+  width: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+  /* Ukrywa rogi mapy, które wystają poza zaokrąglenie */
+  border: 1px solid #e0e0e0;
+}

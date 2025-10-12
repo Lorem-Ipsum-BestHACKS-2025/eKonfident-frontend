@@ -1,0 +1,15 @@
+.tile {
+  background-color: var(--dark);
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+}
+
+.tile > *:first-child {
+  margin-right: 1rem;
+}
+
+.tile header {
+  font-size: 1.5rem;
+  font-weight: 600;
+}

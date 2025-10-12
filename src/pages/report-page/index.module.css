@@ -1,0 +1,77 @@
+@import "leaflet/dist/leaflet.css";
+
+.incidentReportContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: calc(100vh - 5rem);
+  background-color: var(--darkest);
+  color: var(--lightest);
+}
+
+.incidentReportContainer button[type="submit"] {
+  margin-top: 2rem;
+}
+
+.incidentReportContainer h1,
+.incidentReportContainer h2 {
+  margin: 0;
+}
+
+.incidentReportCard {
+  background-color: var(--dark);
+  padding: 3rem 5rem;
+  border-radius: 2em;
+  width: 100%;
+}
+
+.formGroup {
+  margin-bottom: 25px;
+}
+
+.formLabel {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--lightest);
+}
+
+.formInput,
+.formSelect,
+.formTextarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--darkest);
+  border-radius: 6px;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+.formTextarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.nameGroup,
+.datetimeGroup {
+  display: flex;
+  gap: 20px;
+}
+
+.nameGroup > div,
+.datetimeGroup > div {
+  flex: 1;
+}
+
+.leafletContainer {
+  height: 300px;
+  width: 100%;
+  border-radius: 6px;
+  margin-top: 10px;
+}
+
+.map {
+  width: 100%;
+  aspect-ratio: 5/3;
+}
