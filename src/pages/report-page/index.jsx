@@ -5,20 +5,16 @@ import Button from "../../components/Button";
 import MapPicker from "../../components/MapPicker";
 import style from "./index.module.css";
 
-const INCIDENT_CATEGORIES = [
-  { value: "VANDALISM", label: "Wandalizm" },
-  { value: "PARKING_VIOLATION", label: "Naruszenie przepisów parkingowych" },
-  { value: "HOMELESS", label: "Osoba bezdomna w potrzebie" },
-  { value: "ROBBERY", label: "Rozbój / Kradzież" },
-  { value: "AGRESSIVE_PERSON", label: "Agresywna osoba" },
+const WARNING_CATEGORIES = [
+  { value: "POLICE_PATROL", label: "Patrol Policji" },
+  { value: "UNDERCOVER_COPS", label: "Nieoznakowany patrol" },
+  { value: "SPEED_CAMERA", label: "Fotoradar" },
+  { value: "ROADBLOCK", label: "Blokada drogowa / Kontrola" },
+  { value: "PARKING_ENFORCEMENT", label: "Straż miejska (Parking)" },
 ];
 
 export default function ReportPage() {
   const [formState, setFormState] = useState({
-    firstName: "",
-    lastName: "",
-    nickname: "",
-    email: "",
     description: "",
     category: "",
     date: "",
@@ -63,26 +59,20 @@ export default function ReportPage() {
     const combinedDate = new Date(`${formState.date}T${formState.time}`);
 
     const payload = {
-      email: formState.email,
-      firstName: formState.firstName,
-      lastName: formState.lastName,
-      nickname: formState.nickname,
-      konfident: true,
-      konfidentCategory: formState.category,
+      konfident: false,
+      nieKonfidentCategory: formState.category,
       note: formState.description,
       date: combinedDate.toISOString(),
       latitude: formState.location.lat,
       longitude: formState.location.lng,
+      // Hardcoded email as it's required by the DTO but not collected in this form
+      email: "warning-reporter@example.com",
     };
 
     try {
       await axios.post("http://localhost:3000/report", payload);
       setApiState({ loading: false, error: null, success: true });
       setFormState({
-        firstName: "",
-        lastName: "",
-        nickname: "",
-        email: "",
         description: "",
         category: "",
         date: "",
@@ -101,74 +91,14 @@ export default function ReportPage() {
     <div className={style.incidentReportContainer}>
       <div className={style.incidentReportCard}>
         <header>
-          <h1>Zgłoś incydent</h1>
-          <p>Strzel z ucha jak najdokładniej</p>
+          <h1>Dodaj Ostrzeżenie</h1>
+          <p>Ostrzeż dobrych ziomków.</p>
         </header>
 
         <form onSubmit={handleSubmit}>
-          <div className={style.nameGroup}>
-            <div className={style.formGroup}>
-              <label htmlFor="firstName" className={style.formLabel}>
-                Imię
-              </label>
-              <input
-                id="firstName"
-                name="firstName"
-                type="text"
-                className={style.formInput}
-                value={formState.firstName}
-                onChange={handleChange}
-                required
-              />
-            </div>
-            <div className={style.formGroup}>
-              <label htmlFor="lastName" className={style.formLabel}>
-                Nazwisko
-              </label>
-              <input
-                id="lastName"
-                name="lastName"
-                type="text"
-                className={style.formInput}
-                value={formState.lastName}
-                onChange={handleChange}
-                required
-              />
-            </div>
-          </div>
-
-          <div className={style.formGroup}>
-            <label htmlFor="nickname" className={style.formLabel}>
-              Pseudonim (opcjonalnie)
-            </label>
-            <input
-              id="nickname"
-              name="nickname"
-              type="text"
-              className={style.formInput}
-              value={formState.nickname}
-              onChange={handleChange}
-            />
-          </div>
-
-          <div className={style.formGroup}>
-            <label htmlFor="email" className={style.formLabel}>
-              Email
-            </label>
-            <input
-              id="email"
-              name="email"
-              type="email"
-              className={style.formInput}
-              value={formState.email}
-              onChange={handleChange}
-              required
-            />
-          </div>
-
           <div className={style.formGroup}>
             <label htmlFor="category" className={style.formLabel}>
-              Kategoria
+              Kategoria Ostrzeżenia
             </label>
             <select
               id="category"
@@ -181,7 +111,7 @@ export default function ReportPage() {
               <option value="" disabled>
                 Wybierz kategorię
               </option>
-              {INCIDENT_CATEGORIES.map((cat) => (
+              {WARNING_CATEGORIES.map((cat) => (
                 <option key={cat.value} value={cat.value}>
                   {cat.label}
                 </option>
@@ -191,16 +121,15 @@ export default function ReportPage() {
 
           <div className={style.formGroup}>
             <label htmlFor="description" className={style.formLabel}>
-              Opis
+              Dodatkowy opis (opcjonalnie)
             </label>
             <textarea
               id="description"
               name="description"
               className={style.formTextarea}
-              placeholder="Opisz dokładnie co się dzieje..."
+              placeholder="Np. 'Stoją za przystankiem', 'Kontrola trzeźwości'..."
               value={formState.description}
               onChange={handleChange}
-              required
             />
           </div>
 
@@ -254,7 +183,7 @@ export default function ReportPage() {
 
           {apiState.success && (
             <p className={style.successMessage}>
-              Zgłoszenie zostało pomyślnie wysłane!
+              Ostrzeżenie zostało pomyślnie dodane!
             </p>
           )}
           {apiState.error && (
@@ -262,7 +191,7 @@ export default function ReportPage() {
           )}
 
           <Button type="submit" disabled={apiState.loading}>
-            {apiState.loading ? "Wysyłanie..." : "Wyślij Zgłoszenie →"}
+            {apiState.loading ? "Wysyłanie..." : "Dodaj Ostrzeżenie →"}
           </Button>
         </form>
       </div>

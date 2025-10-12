@@ -13,7 +13,7 @@ export default function LeaderboardPage() {
   useEffect(() => {
     const fetchLeaderboard = async () => {
       try {
-        const data = await api.leaderboard.get();
+        const data = await api.leaderboard.get({ konfident: false });
 
         // Limit to top 20 results and transform the data
         const limitedData = data.slice(0, 20);
@@ -61,10 +61,8 @@ export default function LeaderboardPage() {
   return (
     <div className="leaderboardContainer">
       <header className={style.header}>
-        <h1 className="mainTitle">Naczelni konfidenci</h1>
-        <p className="subtitle">
-          {error ? error : "To ci jedzą makowca na komendzie."}
-        </p>
+        <h1 className="mainTitle">Naczelne gity</h1>
+        <p className="subtitle">{error ? error : "To ci dbają o ziomków."}</p>
       </header>
       <div className={style.podiumGrid}>
         {topThree.map((user) => (

@@ -23,7 +23,7 @@ export default function Dashboard() {
       try {
         setLoading(true);
         console.log("Fetching reports...");
-        const reportsData = await api.reports.getAll();
+        const reportsData = await api.reports.getAll({ konfident: false });
         console.log("Reports fetched:", reportsData?.length || 0);
 
         if (!Array.isArray(reportsData)) {
@@ -96,10 +96,10 @@ export default function Dashboard() {
       <AiForecast className={style.ai} />
       <section className={style.side}>
         <span>
-          Przejdź na ciemną stronę mocy... Zostań <b>sztywnym gitem</b>
+          Przejdź na jasną stronę mocy... <b>Strzelaj z ucha</b>
         </span>
-        <Button>
-          <MdLink size={"3rem"} /> Zobacz nieKonfident
+        <Button callback={() => (window.location = "http://localhost:5173/")}>
+          <MdLink size={"3rem"} /> Zobacz eKonfident
         </Button>
       </section>
       <RecentIncidents
