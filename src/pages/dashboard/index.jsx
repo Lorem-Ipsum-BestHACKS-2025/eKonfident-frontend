@@ -62,7 +62,12 @@ export default function Dashboard() {
         <span>
           Przejdź na ciemną stronę mocy... Zostań <b>sztywnym gitem</b>
         </span>
-        <Button>
+        <Button
+          callback={() => {
+            window.location.href = "http://localhost:5174/";
+            return null;
+          }}
+        >
           <MdLink size={"3rem"} /> Zobacz nieKonfident
         </Button>
       </section>

@@ -53,11 +53,13 @@
   resize: vertical;
 }
 
+.nameGroup,
 .datetimeGroup {
   display: flex;
   gap: 20px;
 }
 
+.nameGroup > div,
 .datetimeGroup > div {
   flex: 1;
 }

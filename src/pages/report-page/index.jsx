@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useState } from "react";
 
 import Button from "../../components/Button";
@@ -5,20 +6,30 @@ import MapPicker from "../../components/MapPicker";
 import style from "./index.module.css";
 
 const INCIDENT_CATEGORIES = [
-  "Vandalism/Property Damage",
-  "Safety Hazard",
-  "Illegal Dumping",
-  "Noise Complaint",
-  "Other",
+  { value: "VANDALISM", label: "Wandalizm" },
+  { value: "PARKING_VIOLATION", label: "Naruszenie przepisów parkingowych" },
+  { value: "HOMELESS", label: "Osoba bezdomna w potrzebie" },
+  { value: "ROBBERY", label: "Rozbój / Kradzież" },
+  { value: "AGRESSIVE_PERSON", label: "Agresywna osoba" },
 ];
 
 export default function ReportPage() {
   const [formState, setFormState] = useState({
+    firstName: "",
+    lastName: "",
+    nickname: "",
+    email: "",
     description: "",
     category: "",
     date: "",
     time: "",
-    location: null, // Stores { lat, lng } from the map
+    location: null,
+  });
+
+  const [apiState, setApiState] = useState({
+    loading: false,
+    error: null,
+    success: false,
   });
 
   const handleChange = (e) => {
@@ -34,13 +45,56 @@ export default function ReportPage() {
       ...prevState,
       location: latlng,
     }));
-    console.log("Location picked:", latlng);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Submitting Report:", formState);
-    alert("Report Submitted! Check console for data.");
+    if (!formState.location) {
+      setApiState({
+        loading: false,
+        error: "Proszę wybrać lokalizację na mapie.",
+        success: false,
+      });
+      return;
+    }
+
+    setApiState({ loading: true, error: null, success: false });
+
+    const combinedDate = new Date(`${formState.date}T${formState.time}`);
+
+    const payload = {
+      email: formState.email,
+      firstName: formState.firstName,
+      lastName: formState.lastName,
+      nickname: formState.nickname,
+      konfident: true,
+      konfidentCategory: formState.category,
+      note: formState.description,
+      date: combinedDate.toISOString(),
+      latitude: formState.location.lat,
+      longitude: formState.location.lng,
+    };
+
+    try {
+      await axios.post("http://localhost:3000/report", payload);
+      setApiState({ loading: false, error: null, success: true });
+      setFormState({
+        firstName: "",
+        lastName: "",
+        nickname: "",
+        email: "",
+        description: "",
+        category: "",
+        date: "",
+        time: "",
+        location: null,
+      });
+    } catch (error) {
+      const errorMessage =
+        error.response?.data?.message ||
+        "Wystąpił błąd podczas wysyłania zgłoszenia.";
+      setApiState({ loading: false, error: errorMessage, success: false });
+    }
   };
 
   return (
@@ -52,7 +106,66 @@ export default function ReportPage() {
         </header>
 
         <form onSubmit={handleSubmit}>
-          {/* Category (Dropdown List) */}
+          <div className={style.nameGroup}>
+            <div className={style.formGroup}>
+              <label htmlFor="firstName" className={style.formLabel}>
+                Imię
+              </label>
+              <input
+                id="firstName"
+                name="firstName"
+                type="text"
+                className={style.formInput}
+                value={formState.firstName}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div className={style.formGroup}>
+              <label htmlFor="lastName" className={style.formLabel}>
+                Nazwisko
+              </label>
+              <input
+                id="lastName"
+                name="lastName"
+                type="text"
+                className={style.formInput}
+                value={formState.lastName}
+                onChange={handleChange}
+                required
+              />
+            </div>
+          </div>
+
+          <div className={style.formGroup}>
+            <label htmlFor="nickname" className={style.formLabel}>
+              Pseudonim (opcjonalnie)
+            </label>
+            <input
+              id="nickname"
+              name="nickname"
+              type="text"
+              className={style.formInput}
+              value={formState.nickname}
+              onChange={handleChange}
+            />
+          </div>
+
+          <div className={style.formGroup}>
+            <label htmlFor="email" className={style.formLabel}>
+              Email
+            </label>
+            <input
+              id="email"
+              name="email"
+              type="email"
+              className={style.formInput}
+              value={formState.email}
+              onChange={handleChange}
+              required
+            />
+          </div>
+
           <div className={style.formGroup}>
             <label htmlFor="category" className={style.formLabel}>
               Kategoria
@@ -69,8 +182,8 @@ export default function ReportPage() {
                 Wybierz kategorię
               </option>
               {INCIDENT_CATEGORIES.map((cat) => (
-                <option key={cat} value={cat}>
-                  {cat}
+                <option key={cat.value} value={cat.value}>
+                  {cat.label}
                 </option>
               ))}
             </select>
@@ -91,7 +204,6 @@ export default function ReportPage() {
             />
           </div>
 
-          {/* Date and Time */}
           <div className={style.datetimeGroup}>
             <div className={style.formGroup}>
               <label htmlFor="date" className={style.formLabel}>
@@ -140,7 +252,18 @@ export default function ReportPage() {
             </p>
           )}
 
-          <Button type="submit">Wyślij Zgłoszenie →</Button>
+          {apiState.success && (
+            <p className={style.successMessage}>
+              Zgłoszenie zostało pomyślnie wysłane!
+            </p>
+          )}
+          {apiState.error && (
+            <p className={style.errorMessage}>{apiState.error}</p>
+          )}
+
+          <Button type="submit" disabled={apiState.loading}>
+            {apiState.loading ? "Wysyłanie..." : "Wyślij Zgłoszenie →"}
+          </Button>
         </form>
       </div>
     </div>
