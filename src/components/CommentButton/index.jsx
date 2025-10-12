@@ -5,7 +5,7 @@ import style from "./index.module.css";
 
 export default function CommentButton({ id }) {
   return (
-    <Link to={`/reports/${id}`} className={style.button}>
+    <Link to={`/report/${id}`} className={style.button}>
       <MdOutlineAddComment /> <span>Skomentuj</span>
     </Link>
   );

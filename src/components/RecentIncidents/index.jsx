@@ -5,7 +5,7 @@ import IncidentRecord from "../IncidentRecord";
 import style from "./index.module.css";
 
 export default function RecentIncidents({ className, incidents }) {
-  incidents = incidents.slice(0, 3);
+  incidents = incidents.slice(0, 4);
   return (
     <section className={`${style.tile} ${className}`}>
       <section className={style.top}>
@@ -14,7 +14,7 @@ export default function RecentIncidents({ className, incidents }) {
           <IncidentRecord
             className={style.incident}
             id={1}
-            title="Rabunek"
+            title="Patrol Policji"
             address="Urzędowa 3, 00-00 Białystok"
             description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum sequi
                       dolores quasi eius architecto dolore molestias excepturi quas, modi
@@ -26,9 +26,6 @@ export default function RecentIncidents({ className, incidents }) {
           />
         ))}
       </section>
-      <Link to="/reports" className={style.button}>
-        <span>Zobacz więcej</span> <MdOutlineReadMore size={"2rem"} />
-      </Link>
     </section>
   );
 }

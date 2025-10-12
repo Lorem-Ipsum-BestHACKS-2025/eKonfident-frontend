@@ -60,7 +60,7 @@ export default function Dashboard() {
       <AiForecast className={style.ai} />
       <section className={style.side}>
         <span>
-          Przejdź na ciemną stronę mocy... Bądź <b>sztywnym gitem.</b>
+          Przejdź na ciemną stronę mocy... Zostań <b>sztywnym gitem</b>
         </span>
         <Button>
           <MdLink size={"3rem"} /> Zobacz nieKonfident

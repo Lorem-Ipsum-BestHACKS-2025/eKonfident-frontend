@@ -14,13 +14,10 @@ export default function Navbar() {
         <Link to="/" className={style.link}>
           Strona Główna
         </Link>
-        <Link to="/report" className={style.link}>
-          Zgłoszenia
-        </Link>
         <Link to="/leaderboards" className={style.link}>
           Rankingi
         </Link>
-        <Button to="/"> + Dodaj zgłoszenie</Button>
+        <Button to="/add-report"> + Dodaj zgłoszenie</Button>
       </section>
     </nav>
   );

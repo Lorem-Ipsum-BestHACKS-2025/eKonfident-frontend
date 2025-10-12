@@ -2,10 +2,10 @@
 
 * {
   box-sizing: border-box;
-  --darkest: #2d3142;
-  --dark: #4f5d75;
-  --light: #bfc0c0;
-  --lightest: #ffffff;
+  --lightest: #2d3142;
+  --light: #4f5d75;
+  --dark: #bfc0c0;
+  --darkest: #ffffff;
   --accent: #ef8354;
 }
 

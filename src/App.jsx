@@ -4,6 +4,7 @@ import "./App.css";
 import Navbar from "./components/Navbar";
 import Dashboard from "./pages/dashboard";
 import LeaderboardPage from "./pages/leaderboard-page";
+import Report from "./pages/report";
 import ReportPage from "./pages/report-page";
 
 function App() {
@@ -13,7 +14,8 @@ function App() {
       <main className="main">
         <Routes>
           <Route path="/" element={<Dashboard />} />
-          <Route path="/report" element={<ReportPage />} />
+          <Route path="/add-report" element={<ReportPage />} />
+          <Route path="/report/:id" element={<Report />} />
           <Route path="/leaderboards" element={<LeaderboardPage />} />
         </Routes>
       </main>

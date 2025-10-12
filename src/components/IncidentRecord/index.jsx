@@ -26,7 +26,7 @@ export default function IncidentRecord({
         </section>
       </section>
       <section className={style.buttons}>
-        <VoteButton id={id} voteGiven={1} count={200} />
+        <VoteButton id={id} voteGiven={0} count={200} />
         <CommentButton id={id} />
       </section>
     </section>
