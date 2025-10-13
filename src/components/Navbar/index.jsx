@@ -1,4 +1,4 @@
-import { MdReport } from "react-icons/md";
+import { MdDarkMode } from "react-icons/md";
 import { Link } from "react-router-dom";
 
 import Button from "../Button";
@@ -8,7 +8,7 @@ export default function Navbar() {
   return (
     <nav className={style.nav}>
       <section>
-        <MdReport size="2.5rem" /> eKonfident
+        <MdDarkMode size="2.5rem" /> nieKonfident
       </section>
       <section className={style.links}>
         <Link to="/" className={style.link}>

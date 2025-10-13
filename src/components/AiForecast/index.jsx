@@ -11,7 +11,7 @@ export default function AiForecast({ className = "" }) {
   useEffect(() => {
     const fetchAiSummary = async () => {
       try {
-        const summary = await api.ai.getSummary(true); // Get summary for konfident reports
+        const summary = await api.ai.getSummary(false); // Get summary for konfident reports
         setAiSummary(summary);
       } catch (error) {
         console.error("Failed to fetch AI summary:", error);
