@@ -4,6 +4,8 @@
 
 **eKonfident** is a gamified, community-driven web application designed to improve public safety by allowing citizens to easily report and track local incidents. Built with a touch of humor (embracing the local "neighborhood snitch" meme culture), the platform encourages active participation through leaderboards, community voting, and real-time map visualizations.
 
+> For the evil twin of eKonfident visit [nieKonfident](https://github.com/Lorem-Ipsum-BestHACKS-2025/nieKonfident-frontend) - the dark side for the "Good Homies". Featuring **dark mode**.
+
 ## Key Features
 
 * 🗺️ **Interactive Incident Map:** View real-time reports and heatmaps of incidents across the country using an interactive map (powered by Leaflet/OpenStreetMap).
