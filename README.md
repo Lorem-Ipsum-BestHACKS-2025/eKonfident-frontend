@@ -1,16 +1,69 @@
-# React + Vite
+# eKonfident (Frontend)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> **BestHacks 2025 Hackathon Project** | **Topic:** Public Safety
 
-Currently, two official plugins are available:
+**eKonfident** is a gamified, community-driven web application designed to improve public safety by allowing citizens to easily report and track local incidents. Built with a touch of humor (embracing the local "neighborhood snitch" meme culture), the platform encourages active participation through leaderboards, community voting, and real-time map visualizations.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Key Features
 
-## React Compiler
+* 🗺️ **Interactive Incident Map:** View real-time reports and heatmaps of incidents across the country using an interactive map (powered by Leaflet/OpenStreetMap).
+* 📝 **Quick Reporting:** A form to report incidents with precise geolocation, category tagging, and detailed descriptions.
+* 🏆 **Gamification & Leaderboards:** Users earn points for verified reports. The **Top Snitches** leaderboard ranks the most active community members.
+* 👍 **Community Verification:** Users can upvote or downvote incidents to filter out fake reports and increase the visibility of real threats.
+* 💬 **Comments System:** Discuss specific incidents, provide additional information, or warn others in the comment section under each report.
+* 🤖 **AI Overview:** Integration for AI-powered safety analysis of specific areas based on recent incident data.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Screenshots
 
-## Expanding the ESLint configuration
+| Main Dashboard & Map | Incident Reporting Form |
+| :---: | :---: |
+| ![Dashboard](./assets/screenshot-main.png) | ![Report Form](./assets/screenshot-form.png) |
+| **Leaderboards (Ranking)** | **Incident Details & Comments** |
+| ![Leaderboard](./assets/screenshot-leaderboards.png) | ![Details](./assets/screenshot-details.png) |
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Tech Stack
+
+* **Frontend Framework:** React
+* **Styling:** CSS modules
+* **Maps:** Leaflet & OpenStreetMap
+
+## Getting Started
+
+To get a local copy up and running, follow these simple steps.
+
+### Prerequisites
+
+* Node.js (v16 or higher recommended)
+* npm or yarn
+
+### Installation
+
+1. Clone the repository:
+
+  ```sh
+  git clone https://github.com/Lorem-Ipsum-BestHACKS-2025/eKonfident-frontend.git
+
+2. Navigate to the project directory:
+
+  ```sh
+  cd eKonfident-frontend
+  ```
+
+3. Install dependencies
+
+  ```sh
+  npm install
+  # or
+  yarn install
+  ```
+
+4. Configure environment variables:
+    - Modify .env file in the root directory and add your API endpoints.
+
+5. Start the development server:
+
+  ```sh
+  npm run dev
+  # or
+  yarn dev
+  ```
