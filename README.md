@@ -4,6 +4,7 @@
 
 **eKonfident** is a gamified, community-driven web application designed to improve public safety by allowing citizens to easily report and track local incidents. Built with a touch of humor (embracing the local "neighborhood snitch" meme culture), the platform encourages active participation through leaderboards, community voting, and real-time map visualizations.
 
+> [!TIP]
 > For the evil twin of eKonfident visit [nieKonfident](https://github.com/Lorem-Ipsum-BestHACKS-2025/nieKonfident-frontend) - the dark side for the "Good Homies". Featuring **dark mode**.
 
 ## Key Features
@@ -44,6 +45,7 @@ To get a local copy up and running, follow these simple steps.
 
   ```sh
   git clone https://github.com/Lorem-Ipsum-BestHACKS-2025/eKonfident-frontend.git
+  ```
 
 2. Navigate to the project directory:
 
